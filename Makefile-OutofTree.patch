@@ -1,0 +1,10 @@
+5c5
+< obj-$(CONFIG_DVB_LOOPBACK_ADAPTER) += dvbloopback.o
+---
+> obj-m = dvbloopback.o
+6a7,11
+> 
+>   all: add_modver
+> 	$(MAKE) -C $(BUILD_DIR) M=$(MODDIR) modules
+>   add_modver: $(SYMVER)
+> 
