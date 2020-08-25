@@ -1,10 +1,14 @@
-5c5
-< obj-$(CONFIG_DVB_LOOPBACK_ADAPTER) += dvbloopback.o
----
-> obj-m = dvbloopback.o
-6a7,11
-> 
->   all: add_modver
-> 	$(MAKE) -C $(BUILD_DIR) M=$(MODDIR) modules
->   add_modver: $(SYMVER)
-> 
+--- a/dvbloopback/Makefile	2020-08-24 12:46:22.874430926 +0200
++++ b/dvbloopback/Makefile	2020-08-25 19:27:30.721146832 +0200
+@@ -2,5 +2,10 @@
+                     dvblb_proc.o \
+                     dvblb_forward.o
+ 
+-obj-$(CONFIG_DVB_LOOPBACK_ADAPTER) += dvbloopback.o
++obj-m = dvbloopback.o
+ EXTRA_CFLAGS = -Idrivers/media/dvb-core/
++
++  all: add_modver
++	$(MAKE) -C $(BUILD_DIR) M=$(MODDIR) modules
++  add_modver: $(SYMVER)
++
