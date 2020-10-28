@@ -452,7 +452,7 @@ static int dvblb_release(struct inode *inode, struct file *f)
 		printk("Failed to find private data during close\n");
 		return -EFAULT;
 	}
-	dprintk("dvblb_release %d%s%d fd:%d\n", lbdev->parent->adapter.num,
+	dprintk("dvblb_release adapter%d/%s%d fd:%d\n", lbdev->parent->adapter.num,
 	        dnames[dvbdev->type],
 	        dvbdev->id, find_filemap(lbdev, filemap));
 
@@ -683,7 +683,7 @@ static int dvblb_looped_ioctl(struct file *f,
                 printk("Failed to find private data during ioctl\n");
                 return -EFAULT;
         }
-	dprintk("dvblb_ioctl %d%s%d fd:%d\n", lbdev->parent->adapter.num,
+	dprintk("dvblb_ioctl adapter%d/%s%d fd:%d\n", lbdev->parent->adapter.num,
 	        dnames[dvbdev->type],
 	        dvbdev->id, find_filemap(lbdev, filemap));
 	ret = dvblb_fake_ioctl(lbdev, filemap, cmd, parg);
